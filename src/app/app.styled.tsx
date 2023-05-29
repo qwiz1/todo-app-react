@@ -17,7 +17,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
-    font-size: 16px;
+    font-size: 14px;
     color: ${COLORS.dark};
     background-color: ${COLORS.light};
     text-rendering: optimizeSpeed;
