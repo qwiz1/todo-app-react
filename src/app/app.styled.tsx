@@ -34,6 +34,7 @@ export const GlobalStyles = createGlobalStyle`
   button,
   textarea,
   select {
+    color: ${COLORS.dark};
     font: inherit;
   }
 
