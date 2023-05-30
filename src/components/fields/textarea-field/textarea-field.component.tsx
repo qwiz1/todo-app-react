@@ -16,7 +16,7 @@ const TextareaField: React.FC<TextareaFieldProps> = ({
   ...props
 }) => {
   const [field, meta] = useField(props);
-  const errorText = meta.error && meta.touched ? meta.error : 'some error';
+  const errorText = meta.error && meta.touched ? meta.error : '';
   return (
     <FieldContainer>
       {label && <FieldLabel htmlFor={id}>{label}</FieldLabel>}
