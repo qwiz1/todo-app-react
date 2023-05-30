@@ -1,10 +1,10 @@
 const COLORS = {
-  light: '#ffffff',
-  dark: '#2B2B2B',
-  primary: '#90c7fe',
-  secondary: '#808080',
-  overlay: '#3b3b3bab',
-  error: '#ef5b5b',
+  LIGHT: '#ffffff',
+  DARK: '#2B2B2B',
+  BLUE: '#90c7fe',
+  GRAY: '#747474',
+  OVERLAY: '#3b3b3bab',
+  ERROR: '#ed4337',
 };
 
 export { COLORS };
