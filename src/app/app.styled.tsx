@@ -18,8 +18,8 @@ export const GlobalStyles = createGlobalStyle`
     font-family: 'Rubik', sans-serif;
     font-weight: 400;
     font-size: 14px;
-    color: ${COLORS.dark};
-    background-color: ${COLORS.light};
+    color: ${COLORS.DARK};
+    background-color: ${COLORS.LIGHT};
     text-rendering: optimizeSpeed;
     overflow-x: hidden;
   }
@@ -34,7 +34,7 @@ export const GlobalStyles = createGlobalStyle`
   button,
   textarea,
   select {
-    color: ${COLORS.dark};
+    color: ${COLORS.DARK};
     font: inherit;
   }
 
