@@ -1,4 +1,5 @@
 const SIZES = {
+  XL: '2rem',
   L: '1.6rem',
   ML: '1.2rem',
   M: '1rem',
