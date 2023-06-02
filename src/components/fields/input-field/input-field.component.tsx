@@ -1,8 +1,8 @@
 import { Field, FieldAttributes, useField } from 'formik';
-import { FieldContainer } from '../styled-components';
-import { Input } from '../styled-components/input';
-import { FieldLabel } from '../styled-components/field-label';
-import { ErrorMessage } from '../styled-components/error-message/error-message.styled';
+import { FieldContainer } from '../../styled-components/field-container';
+import { Input } from '../../styled-components/input';
+import { FieldLabel } from '../../styled-components/field-label';
+import { ErrorMessage } from '../../styled-components/error-message';
 
 type InputFieldProps = FieldAttributes<{
   type?: string;

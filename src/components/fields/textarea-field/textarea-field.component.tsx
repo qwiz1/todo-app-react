@@ -1,8 +1,8 @@
 import { Field, FieldAttributes, useField } from 'formik';
-import { FieldContainer } from '../styled-components';
-import { FieldLabel } from '../styled-components/field-label';
-import { ErrorMessage } from '../styled-components/error-message/error-message.styled';
-import { Textarea } from '../styled-components/textarea';
+import { FieldContainer } from '../../styled-components/field-container';
+import { FieldLabel } from '../../styled-components/field-label';
+import { ErrorMessage } from '../../styled-components/error-message/error-message.styled';
+import { Textarea } from '../../styled-components/textarea';
 
 type TextareaFieldProps = FieldAttributes<{
   rows?: number;
