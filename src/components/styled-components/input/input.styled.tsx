@@ -6,7 +6,7 @@ const Input = styled.input`
   outline: none;
   border: 2px solid ${COLORS.DARK};
   box-shadow: 3px 2px;
-  padding: calc(${SPACES.S} / 3) ${SPACES.M};
+  padding: calc(${SPACES.S} / 2.5) ${SPACES.M};
   &:focus {
     box-shadow: none;
   }
