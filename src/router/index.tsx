@@ -5,6 +5,7 @@ import SignIn from 'src/pages/sign-in';
 import SignUp from 'src/pages/sign-up';
 import Todo from 'src/pages/todo';
 import Welcome from 'src/pages/welcome';
+import EditTodo from 'src/pages/edit-todo';
 import { AppRoute } from 'src/common/enums';
 
 export const router = createBrowserRouter([
@@ -22,7 +23,7 @@ export const router = createBrowserRouter([
       },
       {
         path: AppRoute.TODOS_$ID_EDIT,
-        element: <div>Todo EDIT</div>,
+        element: <EditTodo />,
       },
       {
         path: AppRoute.PROFILE_$USERNAME,
