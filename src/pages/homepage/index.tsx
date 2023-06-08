@@ -1,11 +1,12 @@
 import { Outlet } from 'react-router-dom';
+import { Header } from 'src/components/header';
 
 const Homepage: React.FC = () => {
   return (
-    <main>
-      <div>Homepage</div>
+    <>
+      <Header />
       <Outlet />
-    </main>
+    </>
   );
 };
 
