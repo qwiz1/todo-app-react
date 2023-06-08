@@ -12,24 +12,9 @@ import { AppRoute } from 'src/common/enums';
 import { FormTitle } from 'src/components/styled-components/form-title';
 
 const ForgotPassword: React.FC = () => {
-  // const history = useHistory();
-
-  // const { mutate } = useForgotPassword(() => {
-  //   toast.success('We send your new password via email! Check it!');
-  // });
-
-  // const handleSubmit = (
-  //   forgotPassValues: ForgotPassPayload,
-  //   { setSubmitting }: FormikHelpers<ForgotPassPayload>
-  // ) => {
-  //   setSubmitting(false);
-  //   mutate(forgotPassValues);
-  //   history.replace('/sign-in');
-  // };
   return (
     <Formik
       initialValues={FORGOT_PASS_INITIAL_VALUES}
-      // validationSchema={ForgotPassSchema}
       onSubmit={(v: any) => console.log(v)}
     >
       <FormContainer>

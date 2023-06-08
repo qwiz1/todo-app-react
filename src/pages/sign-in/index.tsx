@@ -8,24 +8,9 @@ import { MediumButton } from 'src/components/styled-components/button';
 import { FormTitle } from 'src/components/styled-components/form-title';
 
 const SignIn: React.FC = () => {
-  // const history = useHistory();
-
-  // const { mutate } = useSignIn(() => {
-  //   toast.success('Successfully signed in!');
-  // });
-
-  // const handleSubmit = (
-  //   sigInValues: SignInPayload,
-  //   { setSubmitting }: FormikHelpers<SignInPayload>,
-  // ) => {
-  //   setSubmitting(false);
-  //   mutate(sigInValues);
-  //   history.replace('/');
-  // };
   return (
     <Formik
       initialValues={SIGN_IN_INITIAL_VALUES}
-      // validationSchema={SignInSchema}
       onSubmit={(signInValues: any) => console.log(signInValues)}
     >
       <FormContainer>

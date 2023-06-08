@@ -12,22 +12,9 @@ import { AppRoute } from 'src/common/enums';
 import { FormTitle } from 'src/components/styled-components/form-title';
 
 const SignUp: React.FC = () => {
-  // const { mutate } = useSignUp(() => {
-  //   toast.success('We send confirmation link on your email! Check it!');
-  // });
-
-  // const handleSubmit = (
-  //   sigUpValues: SignUpPayload,
-  //   { setSubmitting }: FormikHelpers<SignUpPayload>
-  // ) => {
-  //   setSubmitting(false);
-  //   mutate(sigUpValues);
-  //   console.log(sigUpValues);
-  // };
   return (
     <Formik
       initialValues={SIGN_UP_INITIAL_VALUES}
-      // validationSchema={SignUpSchema}
       onSubmit={(v: any) => console.log(v)}
     >
       <FormContainer>
