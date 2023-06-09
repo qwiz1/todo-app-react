@@ -1,12 +1,14 @@
-import { SPACES } from 'src/theme';
 import styled from 'styled-components';
 
 const StyledHeader = styled.header`
-  padding: ${SPACES.M} 0;
+  width: 100vw;
+  height: 60px;
+  display: flex;
+  align-items: center;
 `;
 
 const Navigation = styled.nav`
-  max-width: 90%;
+  width: 90%;
   margin: 0 auto;
 `;
 

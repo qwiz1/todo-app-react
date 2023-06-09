@@ -4,7 +4,7 @@ import { COLORS, SPACES } from 'src/theme';
 const SearchWrapper = styled.div`
   width: 200px;
   position: relative;
-  margin: 0 ${SPACES.S} ${SPACES.S} 0;
+  margin: 0 0 ${SPACES.S} 0;
 `;
 
 const SearchField = styled.input`

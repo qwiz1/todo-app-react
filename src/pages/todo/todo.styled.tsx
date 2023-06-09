@@ -10,12 +10,12 @@ import styled from 'styled-components';
 `;
 
 const TodoContainer = styled.div`
-  min-height: 80vh;
+  height: calc(100vh - 60px - ${SPACES.L} - ${SPACES.L});
   max-width: 640px;
   width: 90%;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 `;
 
 const DescriptionContainer = styled.div`
