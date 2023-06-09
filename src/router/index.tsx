@@ -7,6 +7,7 @@ import Todo from 'src/pages/todo';
 import Welcome from 'src/pages/welcome';
 import EditTodo from 'src/pages/edit-todo';
 import { AppRoute } from 'src/common/enums';
+import { Todos } from 'src/pages/todos';
 
 export const router = createBrowserRouter([
   {
@@ -15,7 +16,7 @@ export const router = createBrowserRouter([
     children: [
       {
         path: AppRoute.TODOS,
-        element: <div>Todos</div>,
+        element: <Todos />,
       },
       {
         path: AppRoute.TODOS_$ID,
