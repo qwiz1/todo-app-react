@@ -9,6 +9,7 @@ const StyledHeader = styled.header`
 
 const Navigation = styled.nav`
   width: 90%;
+  max-width: 1024px;
   margin: 0 auto;
 `;
 
