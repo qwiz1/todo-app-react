@@ -1,45 +1,55 @@
 import { createBrowserRouter } from 'react-router-dom';
+import ForgotPassword from 'src/pages/forgot-password';
 import Homepage from 'src/pages/homepage';
+import SignIn from 'src/pages/sign-in';
+import SignUp from 'src/pages/sign-up';
 import Todo from 'src/pages/todo';
 import Welcome from 'src/pages/welcome';
+import EditTodo from 'src/pages/edit-todo';
+import { AppRoute } from 'src/common/enums';
+import { Todos } from 'src/pages/todos';
 
 export const router = createBrowserRouter([
   {
-    path: '/',
+    path: AppRoute.ROOT,
     element: <Homepage />,
     children: [
       {
-        path: 'welcome',
-        element: <Welcome />,
+        path: AppRoute.TODOS,
+        element: <Todos />,
       },
       {
-        path: 'todo/:todoId',
+        path: AppRoute.TODOS_$ID,
         element: <Todo />,
-        children: [
-          {
-            path: 'edit',
-            element: <div>Edit</div>,
-          },
-        ],
       },
       {
-        path: 'sign-up',
-        element: <div>sign-up</div>,
+        path: AppRoute.TODOS_$ID_EDIT,
+        element: <EditTodo />,
       },
       {
-        path: 'sign-in',
-        element: <div>sign-in</div>,
-      },
-      {
-        path: 'profile/:username',
+        path: AppRoute.PROFILE_$USERNAME,
         element: <div>Profile</div>,
-        children: [
-          {
-            path: 'edit',
-            element: <div>Edit</div>,
-          },
-        ],
+      },
+      {
+        path: AppRoute.PROFILE_$USERNAME_EDIT,
+        element: <div>Profile EDIT</div>,
       },
     ],
+  },
+  {
+    path: AppRoute.SIGN_UP,
+    element: <SignUp />,
+  },
+  {
+    path: AppRoute.SIGN_IN,
+    element: <SignIn />,
+  },
+  {
+    path: AppRoute.FORGOT_PASSWORD,
+    element: <ForgotPassword />,
+  },
+  {
+    path: AppRoute.WELCOME,
+    element: <Welcome />,
   },
 ]);

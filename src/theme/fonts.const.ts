@@ -1,20 +1,21 @@
 const SIZES = {
-  l: '1.6rem',
-  ml: '1.2rem',
-  m: '1rem',
-  sm: '0.8rem',
-  s: '0.6rem',
+  XL: '2rem',
+  L: '1.6rem',
+  ML: '1.2rem',
+  M: '1rem',
+  SM: '0.8rem',
+  S: '0.6rem',
 };
 
 const FAMILIES = {
-  primary: 'Rubik',
-  secondary: 'sans-serif',
+  PRIMARY: 'Rubik',
+  SECONDARY: 'sans-serif',
 };
 
 const WEIGHTS = {
-  bold: '700',
-  medium: '500',
-  regular: '400',
+  BOLD: '700',
+  MEDIUM: '500',
+  REGULAR: '400',
 };
 
 export { SIZES, FAMILIES, WEIGHTS };
