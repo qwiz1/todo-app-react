@@ -1,9 +1,14 @@
 import React, { useState } from 'react';
 import { useMediaQuery } from '@mui/material';
 import { TodoListControls } from 'src/components/todo-list-controls';
-import { TodoListContainer, TodosMain, TodosPrimaryContainer } from './todos.styled';
+import {
+  TodoListContainer,
+  TodosMain,
+  TodosPrimaryContainer,
+} from './todos.styled';
 import { TodoList } from 'src/components/todo-list';
 import { TodoSwipeList } from 'src/components/todos-swipe-list';
+import { TodoTableList } from 'src/components/todo-table-list/todo-table-list.component';
 
 const TodosMock = [
   {
@@ -42,7 +47,7 @@ const Todos: React.FC = () => {
 
   const getTodoListByView = () => {
     if (isDesktop) {
-      return <div>TodoTableList</div>; //<TodoTableList todos={TodosMock} />
+      return <TodoTableList todos={TodosMock} />;
     }
     if (isTablet) {
       return <TodoSwipeList todos={TodosMock} />;
