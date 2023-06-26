@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
         element: <Todo />,
       },
       {
-        path: AppRoute.TODOS_$ID_EDIT,
+        path: AppRoute.TODOS_EDIT_$ID,
         element: <EditTodo />,
       },
       {
@@ -31,7 +31,7 @@ export const router = createBrowserRouter([
         element: <div>Profile</div>,
       },
       {
-        path: AppRoute.PROFILE_$USERNAME_EDIT,
+        path: AppRoute.PROFILE_EDIT_$USERNAME,
         element: <div>Profile EDIT</div>,
       },
     ],
