@@ -1,4 +1,6 @@
 import React, { useMemo, useState } from 'react';
+import { toast } from 'react-toastify';
+import { useDeleteTodo, useUpdateTodo } from 'src/query-hooks';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -9,7 +11,7 @@ import TablePagination from '@mui/material/TablePagination';
 import TableRow from '@mui/material/TableRow';
 import Paper from '@mui/material/Paper';
 import { Todo } from 'src/common/types';
-import { CustomTableRow } from './table-row.compontent';
+import { CustomTableRow } from './table-row.component';
 
 type HeadCell = {
   id: string;
@@ -43,12 +45,16 @@ const TodoTableList: React.FC<Props> = ({ todos }) => {
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
 
+  const { mutate: mutateUpdate } = useUpdateTodo();
+  const { mutate: mutateDelete } = useDeleteTodo();
+  
   const handleToggleTodoComplete = (id: number, checked: boolean) => {
-    console.log('Toggle todo complete', id, checked);
+    mutateUpdate({ id, data: { isCompleted: checked } });
   };
 
   const handleDeleteTodo = (id: number) => {
-    console.log('Todo delete', id);
+    mutateDelete(id);
+    toast.success('Todo Deleted!');
   };
 
   const handleChangePage = (_event: unknown, newPage: number) => {

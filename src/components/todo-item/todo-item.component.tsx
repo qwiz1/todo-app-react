@@ -10,6 +10,8 @@ import { Todo } from 'src/common/types';
 import { TodoItemWrapper, TodoDescriptionCard } from './todo-item.styled';
 import { AppRoute } from 'src/common/enums';
 import { SmallButton } from '../styled-components/button';
+import { useDeleteTodo, useUpdateTodo } from 'src/query-hooks';
+import { toast } from 'react-toastify';
 
 type Props = {
   todo: Todo;
@@ -18,8 +20,12 @@ type Props = {
 const TodoItem: React.FC<Props> = ({ todo }) => {
   const [isCompleted, setIsCompleted] = useState<boolean>(todo.isCompleted);
 
+  const { mutate: mutateUpdate } = useUpdateTodo();
+  const { mutate: mutateDelete } = useDeleteTodo();
+
   const handleOnClickDelete = () => {
-    console.log('Delete Event');
+    mutateDelete(todo.id);
+    toast.success('Todo Deleted!');
   };
 
   const handleSwitchChange = (
@@ -27,6 +33,7 @@ const TodoItem: React.FC<Props> = ({ todo }) => {
     checked: boolean,
   ) => {
     setIsCompleted(checked);
+    mutateUpdate({ id: todo.id, data: { isCompleted: checked } });
   };
 
   return (
