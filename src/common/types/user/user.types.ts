@@ -1,4 +1,4 @@
-import { Todo } from './todo.type';
+import { Todo } from '../todo';
 
 export type User = {
   id: number;
