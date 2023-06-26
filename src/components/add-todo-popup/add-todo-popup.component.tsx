@@ -14,6 +14,7 @@ import { InputField, TextareaField } from '../fields';
 import { FieldLabel } from '../styled-components/field-label';
 import { useCreateTodo } from 'src/query-hooks';
 import { AddTodoPayload } from 'src/common/types';
+import { AddTodoSchema } from 'src/schemas';
 
 type Props = {
   isModalVisible: boolean;
@@ -39,7 +40,11 @@ const AddTodoPopup: React.FC<Props> = ({ isModalVisible, onBackdropClick }) => {
       isModalVisible={isModalVisible}
       onBackdropClick={onBackdropClick}
     >
-      <Formik initialValues={ADD_TODO_INITIAL_VALUES} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={ADD_TODO_INITIAL_VALUES}
+        onSubmit={handleSubmit}
+        validationSchema={AddTodoSchema}
+      >
         <StyledForm>
           <InputField label="Title:" id="title-field" name="title" />
           <TextareaField

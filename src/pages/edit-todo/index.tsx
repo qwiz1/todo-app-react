@@ -17,6 +17,7 @@ import { FormTitle } from 'src/components/styled-components/form-title';
 import { useGetTodoById, useUpdateTodo } from 'src/query-hooks';
 import { EditTodoPayload } from 'src/common/types';
 import { toast } from 'react-toastify';
+import { EditTodoSchema } from 'src/schemas';
 
 type Todo = {
   title: string;
@@ -57,7 +58,11 @@ const EditTodo: React.FC = () => {
 
   return (
     <EditTodoMain>
-      <Formik initialValues={initialValues} onSubmit={handleSubmit}>
+      <Formik
+        initialValues={initialValues}
+        onSubmit={handleSubmit}
+        validationSchema={EditTodoSchema}
+      >
         <EditForm>
           <FormTitle>Edit Todo</FormTitle>
           <FieldLabel htmlFor="edit-title">Title:</FieldLabel>
@@ -79,7 +84,7 @@ const EditTodo: React.FC = () => {
               />
             </SwitchContainer>
             <SwitchContainer>
-              <FieldLabel htmlFor="edit-is-ptivate">Private:</FieldLabel>
+              <FieldLabel htmlFor="edit-is-private">Private:</FieldLabel>
               <Field
                 id="edit-is-private"
                 name="isPrivate"
