@@ -5,10 +5,12 @@ enum AppRoute {
   SIGN_UP = '/sign-up',
   FORGOT_PASSWORD = '/forgot-password',
   TODOS = '/todos',
-  TODOS_$ID = '/todos/:todoId',
-  TODOS_$ID_EDIT = '/todos/:todoId/edit',
-  PROFILE_$USERNAME = '/profile/:profileId',
-  PROFILE_$USERNAME_EDIT = '/profile/:profileId/edit',
+  TODOS_$ID = '/todos/:id',
+  TODOS_EDIT = '/todos/edit',
+  TODOS_EDIT_$ID = '/todos/edit/:id',
+  PROFILE_$USERNAME = '/profile/:id',
+  PROFILE_EDIT = '/profile/edit',
+  PROFILE_EDIT_$USERNAME = '/profile/edit/:id',
 }
 
 export { AppRoute };
