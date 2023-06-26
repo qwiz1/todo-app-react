@@ -1,11 +1,8 @@
 import React from 'react';
 import { Todo } from 'src/common/types';
 import { TodoItem } from '../todo-item';
-import {
-  ListSwiper,
-  SwiperPrimaryContainer,
-  SwiperSlideItem,
-} from './todo-swipe-list.styled';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { SwiperContainer } from './todo-swipe-list.styled';
 import 'swiper/css';
 import 'swiper/css/pagination';
 
@@ -14,15 +11,15 @@ type Props = {
 };
 
 const TodoSwipeList: React.FC<Props> = ({ todos }) => (
-  <SwiperPrimaryContainer>
-    <ListSwiper slidesPerView={1} spaceBetween={200}>
+  <SwiperContainer>
+    <Swiper slidesPerView={1} spaceBetween={200}>
       {todos.map((todo) => (
-        <SwiperSlideItem key={todo.id}>
+        <SwiperSlide key={todo.id}>
           <TodoItem todo={todo} />
-        </SwiperSlideItem>
+        </SwiperSlide>
       ))}
-    </ListSwiper>
-  </SwiperPrimaryContainer>
+    </Swiper>
+  </SwiperContainer>
 );
 
 export { TodoSwipeList };
