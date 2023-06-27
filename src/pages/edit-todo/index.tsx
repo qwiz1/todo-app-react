@@ -8,20 +8,16 @@ import {
   EditTodoMain,
 } from './edit-todo.styled';
 import { MediumButton } from 'src/components/styled-components/button';
-import { Link } from 'react-router-dom';
+import { Link, Navigate, useParams } from 'react-router-dom';
 import { Switch } from '@mui/material';
 import { AppRoute } from 'src/common/enums';
-import { Field, Formik } from 'formik';
+import { Field, Formik, FormikHelpers } from 'formik';
 import { InputField, TextareaField } from 'src/components/fields';
 import { FormTitle } from 'src/components/styled-components/form-title';
-
-const TodoMock = {
-  title: 'Todo title',
-  description:
-    'You can start using Material UI right away with minimal front-end infrastructure by installing it via CDN, which is a great option for rapid prototyping. Follow this CDN example to get started.',
-  isCompleted: false,
-  isPrivate: false,
-};
+import { useGetTodoById, useUpdateTodo } from 'src/query-hooks';
+import { EditTodoPayload } from 'src/common/types';
+import { toast } from 'react-toastify';
+import { EditTodoSchema } from 'src/schemas';
 
 type Todo = {
   title: string;
@@ -31,21 +27,44 @@ type Todo = {
 };
 
 const EditTodo: React.FC = () => {
+  const { id } = useParams<{ id: string }>();
+  const { data: todo } = useGetTodoById(Number(id));
+
+  const { mutate: mutateUpdateTodo, isSuccess } = useUpdateTodo();
+
+  if (!todo) {
+    return <h2>Loading...</h2>;
+  }
+
   const initialValues: Todo = {
-    title: TodoMock.title,
-    description: TodoMock.description,
-    isCompleted: TodoMock.isCompleted,
-    isPrivate: TodoMock.isPrivate,
+    title: todo.title,
+    description: todo.description,
+    isCompleted: todo.isCompleted,
+    isPrivate: todo.isPrivate,
   };
+
+  const handleSubmit = (
+    todoValues: EditTodoPayload,
+    { setSubmitting }: FormikHelpers<EditTodoPayload>,
+  ) => {
+    setSubmitting(false);
+    mutateUpdateTodo({ id: todo.id, data: todoValues });
+    toast.success('Todo Edited');
+  };
+
+  if (isSuccess) {
+    return <Navigate to={`${AppRoute.TODOS}/${todo.id}`} replace={true} />;
+  }
 
   return (
     <EditTodoMain>
       <Formik
         initialValues={initialValues}
-        onSubmit={(v: any) => console.log(v)}
+        onSubmit={handleSubmit}
+        validationSchema={EditTodoSchema}
       >
         <EditForm>
-        <FormTitle>Edit Todo</FormTitle>
+          <FormTitle>Edit Todo</FormTitle>
           <FieldLabel htmlFor="edit-title">Title:</FieldLabel>
           <FieldContainer>
             <InputField id="edit-title" name="title" />
@@ -65,7 +84,7 @@ const EditTodo: React.FC = () => {
               />
             </SwitchContainer>
             <SwitchContainer>
-              <FieldLabel htmlFor="edit-is-ptivate">Private:</FieldLabel>
+              <FieldLabel htmlFor="edit-is-private">Private:</FieldLabel>
               <Field
                 id="edit-is-private"
                 name="isPrivate"
@@ -75,7 +94,7 @@ const EditTodo: React.FC = () => {
             </SwitchContainer>
           </SwitchesContainer>
           <ButtonGroup>
-            <Link to={AppRoute.TODOS_$ID}>
+            <Link to={`${AppRoute.TODOS}/${todo.id}`}>
               <MediumButton>Back</MediumButton>
             </Link>
             <MediumButton type="submit">Save</MediumButton>
