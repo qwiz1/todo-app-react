@@ -1,5 +1,6 @@
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { InputField } from 'src/components/fields';
 import { MediumButton } from 'src/components/styled-components/button';
 import { SIGN_UP_INITIAL_VALUES } from 'src/common/constants';
@@ -10,13 +11,23 @@ import {
 } from '../sign-in/sign-in.styled';
 import { AppRoute } from 'src/common/enums';
 import { FormTitle } from 'src/components/styled-components/form-title';
+import { SignUpPayload } from 'src/common/types';
+import { useSignUp } from 'src/query-hooks/auth.hooks';
 
 const SignUp: React.FC = () => {
+  const { mutate } = useSignUp();
+
+  const handleSubmit = (
+    sigInValues: SignUpPayload,
+    { setSubmitting }: FormikHelpers<SignUpPayload>,
+  ) => {
+    setSubmitting(false);
+    mutate(sigInValues);
+    toast.success('We send confirmation link on your email! Check it!');
+  };
+
   return (
-    <Formik
-      initialValues={SIGN_UP_INITIAL_VALUES}
-      onSubmit={(v: any) => console.log(v)}
-    >
+    <Formik initialValues={SIGN_UP_INITIAL_VALUES} onSubmit={handleSubmit}>
       <FormContainer>
         <StyledForm>
           <FormTitle>Sign up</FormTitle>

@@ -1,4 +1,5 @@
-import { Formik } from 'formik';
+import { Formik, FormikHelpers } from 'formik';
+import { Link } from 'react-router-dom';
 import { FORGOT_PASS_INITIAL_VALUES } from 'src/common/constants';
 import {
   ButtonsContainer,
@@ -7,16 +8,24 @@ import {
 } from '../sign-in/sign-in.styled';
 import { InputField } from 'src/components/fields';
 import { MediumButton } from 'src/components/styled-components/button';
-import { Link } from 'react-router-dom';
 import { AppRoute } from 'src/common/enums';
 import { FormTitle } from 'src/components/styled-components/form-title';
+import { useForgotPassword } from 'src/query-hooks/auth.hooks';
+import { ForgotPassPayload } from 'src/common/types';
 
 const ForgotPassword: React.FC = () => {
+  const { mutate } = useForgotPassword();
+
+  const handleSubmit = (
+    sigInValues: ForgotPassPayload,
+    { setSubmitting }: FormikHelpers<ForgotPassPayload>,
+  ) => {
+    setSubmitting(false);
+    mutate(sigInValues);
+  };
+
   return (
-    <Formik
-      initialValues={FORGOT_PASS_INITIAL_VALUES}
-      onSubmit={(v: any) => console.log(v)}
-    >
+    <Formik initialValues={FORGOT_PASS_INITIAL_VALUES} onSubmit={handleSubmit}>
       <FormContainer>
         <StyledForm>
           <FormTitle>Forgot password?</FormTitle>
